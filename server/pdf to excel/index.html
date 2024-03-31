@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF To Excel</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>PDF To Excel</h1>
+
+    <div id="drop-container">
+      <label for="file" class="custom-file-upload"> Upload PDF </label>
+      <input class="custom-file-upload" type="file" id="file" accept=".PDF" />
+      <p style="margin-top: 20px">Drag and drop a PDF file here</p>
+      <button onclick="submit()" id="convert">Submit</button>
+    </div>
+
+    <div id="download-container">
+      <p>Click the button below to download the Excel file</p>
+      <a id="download-link" href="#" download>Download</a>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

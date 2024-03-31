@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF to Excel Converter</title>
+  </head>
+  <body>
+    <h2>Upload a PDF to Convert to Excel</h2>
+    <input
+      type="file"
+      id="pdfFile"
+      name="pdf"
+      accept="application/pdf"
+      required
+    />
+    <button type="button" id="uploadButton">Upload PDF</button>
+    <div id="response"></div>
+    <script>
+      document
+        .getElementById('uploadButton')
+        .addEventListener('click', function () {
+          const formData = new FormData();
+          const pdfFile = document.getElementById('pdfFile').files[0];
+          formData.append('pdf', pdfFile);
+
+          fetch('http://localhost:5000/api/convertpdf2xl', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              document.getElementById('response').innerText =
+                'Error: ' + error.toString();
+            });
+        });
+    </script>
+  </body>
+</html>
